@@ -33,8 +33,6 @@ function reducer(state, action) {
     };
   } else if (action.type === "BLOCK_CONTACT") {
     return {
-      //loop over all items
-      // change one of them
       contactList: state.contactList.map((contact) => {
         if (contact.id === action.id) {
           return Object.assign({}, contact, {
@@ -61,47 +59,47 @@ const initialState = {
   ],
 };
 
-let addContact1 = {
-  type: "ADD_CONTACT",
-  contact: {
-    name: "Mahmoud",
-    email: "Mahmoud@m3ntorship",
-    phone: "555 555 ",
-    blocked: true,
-    id: 2,
-  },
-};
+// let addContact1 = {
+//   type: "ADD_CONTACT",
+//   contact: {
+//     name: "Mahmoud",
+//     email: "Mahmoud@m3ntorship",
+//     phone: "555 555 ",
+//     blocked: true,
+//     id: 2,
+//   },
+// };
 
-let addContact2 = {
-  type: "ADD_CONTACT",
-  contact: {
-    name: "Mahmoud",
-    email: "Mahmoud@m3ntorship",
-    phone: "555 555 ",
-    blocked: false,
-    id: 2,
-  },
-};
+// let addContact2 = {
+//   type: "ADD_CONTACT",
+//   contact: {
+//     name: "Mahmoud",
+//     email: "Mahmoud@m3ntorship",
+//     phone: "555 555 ",
+//     blocked: false,
+//     id: 2,
+//   },
+// };
 
-let addContact3 = {
-  type: "ADD_CONTACT",
-  contact: {
-    name: "Mahmoud",
-    email: "Mahmoud@m3ntorship",
-    phone: "555 555 ",
-    blocked: false,
-    id: 3,
-  },
-};
-let deleteContact = {
-  type: "DELETE_CONTACT",
-  id: 2,
-};
+// let addContact3 = {
+//   type: "ADD_CONTACT",
+//   contact: {
+//     name: "Mahmoud",
+//     email: "Mahmoud@m3ntorship",
+//     phone: "555 555 ",
+//     blocked: false,
+//     id: 3,
+//   },
+// };
+// let deleteContact = {
+//   type: "DELETE_CONTACT",
+//   id: 2,
+// };
 
-let blockContact = {
-  type: "BLOCK_CONTACT",
-  id: 3,
-};
+// let blockContact = {
+//   type: "BLOCK_CONTACT",
+//   id: 3,
+// };
 
 const store = createStore(reducer, initialState);
 store.subscribe(() => {
@@ -115,8 +113,8 @@ store.subscribe(() => {
   console.log(nonBlockedContacts);
 });
 
-store.dispatch(addContact1);
-store.dispatch(addContact2);
-store.dispatch(addContact3);
-store.dispatch(deleteContact);
-store.dispatch(blockContact);
+// store.dispatch(addContact1);
+// store.dispatch(addContact2);
+// store.dispatch(addContact3);
+// store.dispatch(deleteContact);
+// store.dispatch(blockContact);
