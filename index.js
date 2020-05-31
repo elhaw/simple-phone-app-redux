@@ -31,8 +31,20 @@ function reducer(state, action) {
         return contact.id !== action.id;
       }),
     };
-  } 
-  else {
+  } else if (action.type === "BLOCK_CONTACT") {
+    return {
+      //loop over all items
+      // change one of them
+      contactList: state.contactList.map((contact) => {
+        if (contact.id === action.id) {
+          return Object.assign({}, contact, {
+            blocked: true,
+          });
+        }
+        return contact;
+      }),
+    };
+  } else {
     return state;
   }
 }
@@ -60,7 +72,7 @@ let addContact1 = {
   },
 };
 
-let  addContact2 = {
+let addContact2 = {
   type: "ADD_CONTACT",
   contact: {
     name: "Mahmoud",
@@ -83,22 +95,28 @@ let addContact3 = {
 };
 let deleteContact = {
   type: "DELETE_CONTACT",
+  id: 2,
+};
+
+let blockContact = {
+  type: "BLOCK_CONTACT",
   id: 3,
 };
 
-
 const store = createStore(reducer, initialState);
 store.subscribe(() => {
-  console.log('===================\n\ unblocked contacts  \n\n =================')
-  let contactList = store.getState().contactList
-  let nonBlockedContacts = contactList.filter((contact)=> {
-    return !contact.blocked ;
-  })
+  console.log(
+    "===================\n unblocked contacts  \n\n ================="
+  );
+  let contactList = store.getState().contactList;
+  let nonBlockedContacts = contactList.filter((contact) => {
+    return !contact.blocked;
+  });
   console.log(nonBlockedContacts);
 });
 
-
-store.dispatch(contact1);
-store.dispatch(contact2);
-store.dispatch(contact3);
+store.dispatch(addContact1);
+store.dispatch(addContact2);
+store.dispatch(addContact3);
 store.dispatch(deleteContact);
+store.dispatch(blockContact);
