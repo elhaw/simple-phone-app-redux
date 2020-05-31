@@ -1,23 +1,3 @@
-function createStore(reducer, initialState) {
-  let state = initialState;
-  const listeners = [];
-
-  const subscribe = (listener) => listeners.push(listener);
-
-  const getState = () => state;
-
-  const dispatch = (action) => {
-    state = reducer(state, action);
-    listeners.forEach((l) => l());
-  };
-
-  return {
-    subscribe,
-    getState,
-    dispatch,
-  };
-}
-
 function reducer(state, action) {
   if (action.type === "ADD_CONTACT") {
     return {
@@ -58,7 +38,18 @@ const initialState = {
     },
   ],
 };
+const store = createStore(reducer, initialState);
 
+store.subscribe(() => {
+  console.log(
+    "===================\n unblocked contacts  \n\n ================="
+  );
+  let contactList = store.getState().contactList;
+  let nonBlockedContacts = contactList.filter((contact) => {
+    return !contact.blocked;
+  });
+  console.log(nonBlockedContacts);
+});
 // let addContact1 = {
 //   type: "ADD_CONTACT",
 //   contact: {
@@ -100,18 +91,6 @@ const initialState = {
 //   type: "BLOCK_CONTACT",
 //   id: 3,
 // };
-
-const store = createStore(reducer, initialState);
-store.subscribe(() => {
-  console.log(
-    "===================\n unblocked contacts  \n\n ================="
-  );
-  let contactList = store.getState().contactList;
-  let nonBlockedContacts = contactList.filter((contact) => {
-    return !contact.blocked;
-  });
-  console.log(nonBlockedContacts);
-});
 
 // store.dispatch(addContact1);
 // store.dispatch(addContact2);
