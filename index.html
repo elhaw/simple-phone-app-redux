@@ -28,7 +28,12 @@
     }
     .prettycode {
       background-color: #988d8d42;
-      padding: 1rem;
+      padding: 0.5rem;
+      margin-right: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 1rem;
     }
   </style>
   <body>
@@ -83,6 +88,7 @@
           <li>
             Add a contact
           </li>
+
           <p>
             <code class="prettycode">
               { action: 'ADD_CONTACT', contact: { name : 'Ahmed', email:
@@ -102,6 +108,26 @@
               { action: 'BLOCK_CONTACT', id : 1 }
             </code>
           </p>
+        </ul>
+      </article>
+      <article>
+        <h2>
+          Application API
+        </h2>
+        <ul>
+          <li>
+            <code class="prettycode">
+              store.getState()
+            </code>
+            Returns state
+          </li>
+
+          <li>
+            <code class="prettycode">
+              store.dispatch(ACTION)
+            </code>
+            send an action to the reducer
+          </li>
         </ul>
       </article>
     </section>
