@@ -2,7 +2,10 @@ function reducer(state, action) {
   if (action.type === "ADD_CONTACT") {
     // action.payload.blocked = false
     return {
-      contactList: [...state.contactList, {...action.payload,blocked:false}],
+      contactList: [
+        ...state.contactList,
+        { ...action.payload, blocked: false },
+      ],
     };
   }
 
@@ -41,20 +44,12 @@ const initialState = {
 };
 const store = createStore(reducer, initialState);
 
-store.subscribe(() => {
-  console.log(
-    "===================\n unblocked contacts  \n\n ================="
-  );
-  let contactList = store.getState().contactList;
-  let nonBlockedContacts = contactList.filter((contact) => {
-    return !contact.blocked;
+const subscribe = () => {
+  store.subscribe(() => {
+    let state = store.getState();
+    console.log(state);
   });
-  console.log(nonBlockedContacts);
-});
-
-const subscribe = (subscribtion)=>{
-  store.subscribe(subscribtion)
-}
+};
 
 const addContact = (contact) => {
   store.dispatch({
@@ -87,8 +82,8 @@ const getBlackList = () => {
   return store.getState().contactList.filter((contact) => {
     return contact.blocked;
   });
-}; 
+};
 
-const getAll = ()=>{
+const getAll = () => {
   return store.getState().contactList;
-}
+};
