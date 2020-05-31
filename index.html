@@ -30,6 +30,7 @@
       background-color: #988d8d42;
       padding: 0.5rem;
       margin-right: 1.5rem;
+      line-height: 3;
     }
 
     li {
@@ -78,7 +79,6 @@
         </article>
       </section>
       <article>
-        <h2>How to use the App</h2>
         <h2>Acceptance criteria (AC)</h2>
         <p class="desc">
           add a contact delete a contact block a contact log currently
@@ -88,25 +88,9 @@
           <li>
             Add a contact
           </li>
-
-          <p>
-            <code class="prettycode">
-              { action: 'ADD_CONTACT', contact: { name : 'Ahmed', email:
-              'Ahmed@m3ntroship.com' phone: ' 55 555', id : 1 } }
-            </code>
-          </p>
           <li>Delete a contact</li>
-          <p>
-            <code class="prettycode">
-              { action: 'DELETE_CONTACT', id : 1 }
-            </code>
-          </p>
+
           <li>Block a contact</li>
-          <p>
-            <code class="prettycode">
-              { action: 'BLOCK_CONTACT', id : 1 }
-            </code>
-          </p>
         </ul>
       </article>
       <article>
@@ -116,16 +100,49 @@
         <ul>
           <li>
             <code class="prettycode">
-              store.getState()
+             addContact(contact)
             </code>
-            Returns state
+            Add contact
           </li>
 
           <li>
             <code class="prettycode">
-              store.dispatch(ACTION)
+                deleteContact(id)
+
             </code>
-            send an action to the reducer
+            Delete contact
+          </li>
+          <li>
+            <code class="prettycode">
+                blockContact(id)
+
+            </code>
+            Block contact
+          </li>
+
+          <li>
+            <code class="prettycode">
+                getWhiteList()
+
+            </code>
+           Get all unblocked contacts
+          </li>
+
+          
+          <li>
+            <code class="prettycode">
+                getBlackList()
+
+            </code>
+           Get all blocked contacts
+          </li>
+
+          <li>
+            <code class="prettycode">
+                getAll()
+
+            </code>
+           Get all  contacts
           </li>
         </ul>
       </article>
